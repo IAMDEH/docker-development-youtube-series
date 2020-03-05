@@ -5,17 +5,20 @@ metadata:
   labels:
     app: jenkins
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: ui
       port: 8080
       targetPort: 8080
+      nodePort: 32323
       protocol: TCP
     - name: slave
       port: 50000
       protocol: TCP
+      nodePort: 32322
     - name: http
       port: 80
       targetPort: 8080
-  selector:
+      nodePort: 32321
+selector:
     app: jenkins
